@@ -1,0 +1,17 @@
+3c17282 HEAD@{0}: merge homework_01: Fast-forward
+61383ec HEAD@{1}: checkout: moving from homework_01 to main
+3c17282 HEAD@{2}: commit (merge): homework_01-homework_01_b resolved merge-conflict in the A.txt
+ee4fdfc HEAD@{3}: commit: Update a.txt, content changed to c
+f1e6d4a HEAD@{4}: checkout: moving from homework_01_b to homework_01
+f634bea HEAD@{5}: commit: Update a.txt content changed to b
+f1e6d4a HEAD@{6}: checkout: moving from homework_01 to homework_01_b
+f1e6d4a HEAD@{7}: checkout: moving from homework_01_b to homework_01
+f1e6d4a HEAD@{8}: checkout: moving from main to homework_01_b
+61383ec HEAD@{9}: checkout: moving from homework_01_b to main
+f1e6d4a HEAD@{10}: checkout: moving from homework_01_b to homework_01_b
+f1e6d4a HEAD@{11}: checkout: moving from homework_01_b to homework_01_b
+f1e6d4a HEAD@{12}: checkout: moving from homework_01 to homework_01_b
+f1e6d4a HEAD@{13}: commit: Add a.txt
+61383ec HEAD@{14}: checkout: moving from main to homework_01
+61383ec HEAD@{15}: commit: Add gitignore
+1318a02 HEAD@{16}: clone: from https://gitlab.com/dnu.fpm/cross-platform-programming-2022-2023/pz-pt-21/pz-21-2/gudimov-denis/homework.git
