@@ -14,38 +14,38 @@ package edu.dnu.fpm.pz;
 public class CalcImpl implements Calc
 {
     /**
-     * @param a first adding argument
-     * @param b second adding argument
+     * @param first_argument first adding argument
+     * @param second_argument second adding argument
      */
-    public double add(double a, double b) {
-        return a + b;
+    public double add(double first_argument, double second_argument) {
+        return first_argument + second_argument;
     }
 
     /**
-     * @param a argument from which to subtract
-     * @param b subtractive argument
+     * @param first_argument argument from which to subtract
+     * @param second_argument subtractive argument
      */
-    public double subtract(double a, double b) {
-        return a - b;
+    public double subtract(double first_argument, double second_argument) {
+        return first_argument - second_argument;
     }
 
     /**
-     * @param a first multiplying argument
-     * @param b second multiplying argument
+     * @param first_argument first multiplying argument
+     * @param second_argument second multiplying argument
      */
-    public double multiply(double a, double b) {
-        return a * b;
+    public double multiply(double first_argument, double second_argument) {
+        return first_argument * second_argument;
     }
 
     /**
-     * @param a argument that is divided
-     * @param b argument divisor*/
+     * @param first_argument argument that is divided
+     * @param second_argument argument divisor*/
 
-    public double divide(double a, double b) {
+    public double divide(double first_argument, double second_argument) {
         double tmp= 0;
 
         try {
-            tmp= a / b;
+            tmp= first_argument / second_argument;
         } catch (ArithmeticException e) {
             System.out.println("Division by zero");
             tmp= 0;
