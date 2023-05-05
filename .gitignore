@@ -49,3 +49,6 @@ atlassian-ide-plugin.xml
 
 # VS Code
 .vscode/
+
+#rar file
+.rar
