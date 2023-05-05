@@ -10,7 +10,7 @@ public class Service {
     public static Connection getConnection() throws SQLException, MyException {
         Properties props = new Properties();
         try (InputStream input = Service.class.getClassLoader()
-                .getResourceAsStream("db\\db.properties")) {
+                .getResourceAsStream("db/db.properties")) {
             props.load(input);
         } catch (IOException e) {
             throw new MyException("class Service method getConnection()", e);
