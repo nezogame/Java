@@ -28,7 +28,6 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
                         src/main/resources/db/liquibase.properties
                     </propertyFile>
                     <changeLogFile>
-
                         src/main/resources/db/db-changelog-master.xml
                     </changeLogFile>
                 </configuration>
@@ -37,7 +36,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
                         <phase>process-resources</phase>
                         <goals>
                             <goal>
-                                updateSQL
+                                update
                             </goal>
                         </goals>
                     </execution>
