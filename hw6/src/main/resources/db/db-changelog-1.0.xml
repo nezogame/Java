@@ -1,0 +1,26 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation=
+                "http://www.liquibase.org/xml/ns/dbchangelog
+https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <changeSet id="create_employers" author="Orin">
+        <createTable tableName="employers">
+            <column autoIncrement="true" name="id" type="int">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="name" type="varchar2(30)">
+                <constraints nullable="false" />
+            </column>
+            <column name="surname" type="varchar2(30)">
+                <constraints nullable="false" />
+            </column>
+            <column name="phone" type="varchar2(20)">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="tag-1.0" author="Orin">
+        <tagDatabase tag="1.0" />
+    </changeSet>
+</databaseChangeLog>

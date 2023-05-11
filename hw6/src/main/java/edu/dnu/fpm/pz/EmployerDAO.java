@@ -12,7 +12,7 @@ public class EmployerDAO implements InterfaceDAO<Employer> {
     }
 
     final private String CREATE_SQL =
-            "INSERT INTO employers(name, surname, phone) " +
+            "INSERT INTO employment.employers(name, surname, phone) " +
                     "VALUES (?, ?, ?)";
 
     public void create(Employer entity) throws MyException {
@@ -55,7 +55,7 @@ public class EmployerDAO implements InterfaceDAO<Employer> {
     public List<Employer> read() throws MyException {
         List<Employer> employers = new ArrayList<>();
         try (Connection connection = Service.getConnection()) {
-            String READ_SQL = "SELECT * FROM employers";
+            String READ_SQL = "SELECT * FROM employment.employers";
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(READ_SQL);
             while (resultSet.next()) {
@@ -76,11 +76,16 @@ public class EmployerDAO implements InterfaceDAO<Employer> {
         try (Connection connection = Service.getConnection()) {
             String READ_SQL = "select * FROM employment.employers WHERE id=?";
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(READ_SQL);
-            employer.setId(resultSet.getInt("id"));
-            employer.setName(resultSet.getString("name"));
-            employer.setSurname(resultSet.getString("surname"));
-            employer.setPhone(resultSet.getString("phone"));
+            PreparedStatement preparedStatement =
+                    connection.prepareStatement(READ_SQL);
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                employer.setId(resultSet.getInt("id"));
+                employer.setName(resultSet.getString("name"));
+                employer.setSurname(resultSet.getString("surname"));
+                employer.setPhone(resultSet.getString("phone"));
+            }
         } catch (SQLException e) {
             throw new MyException(
                     "class EmployerDAO method getById(int id)", e);
@@ -91,7 +96,7 @@ public class EmployerDAO implements InterfaceDAO<Employer> {
         validateEmployer(entity);
         try (Connection connection = Service.getConnection()) {
             String UPDATE_SQL =
-                    "UPDATE employers SET name=?, surname=?, phone=?" +
+                    "UPDATE employment.employers SET name=?, surname=?, phone=?" +
 
                             "WHERE id=?";
 
@@ -116,7 +121,7 @@ public class EmployerDAO implements InterfaceDAO<Employer> {
 
     public void delete(int entityId) throws MyException {
         try (Connection connection = Service.getConnection()) {
-            String DELETE_SQL = "DELETE FROM employers WHERE id=?";
+            String DELETE_SQL = "DELETE FROM employment.employers WHERE id=?";
             PreparedStatement preparedStatement =
                     connection.prepareStatement(DELETE_SQL);
             preparedStatement.setInt(1, entityId);
