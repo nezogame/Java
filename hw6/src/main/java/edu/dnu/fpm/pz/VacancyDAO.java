@@ -12,7 +12,7 @@ public class VacancyDAO implements InterfaceDAO<Vacancy> {
 
     final private String CREATE_SQL =
             "INSERT INTO " +
-                    "vacancies(employer_id, position, description, salary, publication_date) " +
+                    "employment.vacancies(employer_id, position, description, salary, publication_date) " +
                     "VALUES (?, ?, ?, ?, ?)";
 
     public void create(Vacancy entity) throws MyException {
@@ -61,8 +61,9 @@ public class VacancyDAO implements InterfaceDAO<Vacancy> {
         try (Connection connection = Service.getConnection()) {
             Statement statement = connection.createStatement();
             String READ_SQL =
-                    "SELECT * FROM vacancies " +
-                            "LEFT JOIN employers ON vacancies.employer_id = employers.id";
+                    "SELECT * FROM employment.vacancies " +
+                            "LEFT JOIN employment.employers " +
+                            "ON employment.vacancies.employer_id = employment.employers.id";
             ResultSet resultSet = statement.executeQuery(READ_SQL);
             while (resultSet.next()) {
                 Vacancy vacancy = new Vacancy();
@@ -91,7 +92,7 @@ public class VacancyDAO implements InterfaceDAO<Vacancy> {
         validateVacancy(entity);
         try (Connection connection = Service.getConnection()) {
             String UPDATE_SQL =
-                    "UPDATE vacancies SET employer_id=?, position=?, " +
+                    "UPDATE employment.vacancies SET employer_id=?, position=?, " +
                             "description=?, salary=?, publication_date=?" +
                             "WHERE id=?";
 
@@ -118,7 +119,7 @@ public class VacancyDAO implements InterfaceDAO<Vacancy> {
 
     public void delete(int entityId) throws MyException {
         try (Connection connection = Service.getConnection()) {
-            String DELETE_SQL = "DELETE FROM vacancies WHERE id=?";
+            String DELETE_SQL = "DELETE FROM employment.vacancies WHERE id=?";
             PreparedStatement preparedStatement =
                     connection.prepareStatement(DELETE_SQL);
             preparedStatement.setInt(1, entityId);

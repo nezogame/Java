@@ -45,9 +45,7 @@ public class App {
             System.out.println(current);
         }
         vacancies = vacancyDAO.read();
-        for (Vacancy current : vacancies) {
-            vacancyDAO.delete(current.getId());
-        }
+
         employers = employerDAO.read();
         for (Employer current : employers) {
             employerDAO.delete(current.getId());
